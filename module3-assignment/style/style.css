@@ -1,6 +1,8 @@
-.container.row #chicken{
-   box-sizing:border-box;
-   position: relative;
+*{
+    box-sizing: border-box;
+    position: relative;
+    margin: 0;
+    padding: 0;
 }
 .container #header{
     font-style: italic;
