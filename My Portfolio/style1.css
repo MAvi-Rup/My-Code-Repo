@@ -1,6 +1,7 @@
 *{
     box-sizing: border-box;
     z-index: 0;
+    font-family: 'Ubuntu', sans-serif;
 }
 #content{
     background: #808080;  /* fallback for old browsers */
@@ -21,4 +22,8 @@ background: linear-gradient(to right, #8f94fb, #4e54c8); /* W3C, IE 10+/ Edge, F
 background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+}
+#contactme{
+z-index: 0;
+    
 }
