@@ -1,0 +1,28 @@
+#jumbotron{
+    background-color: violet;
+
+}
+.footer{
+    background-color: thistle;
+}
+body{
+   
+    padding:50px 0px 0px 0px;
+    z-index:0;
+}
+
+.navbar-dark {
+     background-color: #512DA8;
+}
+*{
+    position: relative;
+    box-sizing: border-box;
+}
+
+#carouselButton{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
