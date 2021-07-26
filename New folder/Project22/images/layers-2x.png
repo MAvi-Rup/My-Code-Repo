@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<req ver="2">
+  <tlm>
+    <src>
+      <desc>
+        <mach>
+          <os>
+            <arg nm="vermaj" val="10" />
+            <arg nm="vermin" val="0" />
+            <arg nm="verbld" val="18363" />
+            <arg nm="vercsdbld" val="1440" />
+            <arg nm="verqfe" val="1440" />
+            <arg nm="csdbld" val="1440" />
+            <arg nm="versp" val="0" />
+            <arg nm="arch" val="9" />
+            <arg nm="lcid" val="1033" />
+            <arg nm="geoid" val="244" />
+            <arg nm="sku" val="48" />
+            <arg nm="domain" val="0" />
+            <arg nm="prodsuite" val="256" />
+            <arg nm="ntprodtype" val="1" />
+            <arg nm="platid" val="2" />
+            <arg nm="tmsi" val="387301" />
+            <arg nm="osinsty" val="3" />
+            <arg nm="iever" val="11.1411.18362.0-11.0.1000" />
+            <arg nm="portos" val="0" />
+            <arg nm="ram" val="3795" />
+            <arg nm="svolsz" val="270" />
+            <arg nm="wimbt" val="0" />
+            <arg nm="blddt" val="190318" />
+            <arg nm="bldtm" val="1202" />
+            <arg nm="bldbrch" val="19h1_release" />
+            <arg nm="bldchk" val="0" />
+            <arg nm="os" val="windows" />
+            <arg nm="osver" val="10.0.18362.1440.amd64fre.19h1_release.190318-1202" />
+            <arg nm="buildflightid" val="f322bf5a-fb20-4c6d-ba0b-ff38131662df" />
+            <arg nm="edition" val="Professional" />
+            <arg nm="edu" val="0" />
+          </os>
+          <hw>
+            <arg nm="form" val="2" />
+            <arg nm=

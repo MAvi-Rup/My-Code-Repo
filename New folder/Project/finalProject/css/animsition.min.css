@@ -1,0 +1,332 @@
+" Vim syntax file
+" Language:             screen(1) configuration file
+" Maintainer:           Dmitri Vereshchagin <dmitri.vereshchagin@gmail.com>
+" Previous Maintainer:  Nikolai Weibull <now@bitwi.se>
+" Latest Revision:      2015-09-24
+
+if exists("b:current_syntax")
+  finish
+endif
+
+let s:cpo_save = &cpo
+set cpo&vim
+
+syn match   screenEscape    '\\.'
+
+syn keyword screenTodo      contained TODO FIXME XXX NOTE
+
+syn region  screenComment   display oneline start='#' end='$'
+                          \ contains=screenTodo,@Spell
+
+syn region  screenString    display oneline start=+"+ skip=+\\"+ end=+"+
+                          \ contains=screenVariable,screenSpecial
+
+syn region  screenLiteral   display oneline start=+'+ skip=+\\'+ end=+'+
+
+syn match   screenVariable  contained display '$\%(\h\w*\|{\h\w*}\)'
+
+syn keyword screenBoolean   on off
+
+syn match   screenNumbers   display '\<\d\+\>'
+
+syn match   screenSpecials  contained
+                          \ '%\%([%aAdDhlmMstuwWyY?:{]\|[0-9]*n\|0?cC\)'
+
+syn keyword screenCommands
+                          \ acladd
+                          \ aclchg
+                          \ acldel
+                          \ aclgrp
+                          \ aclumask
+                          \ activity
+                          \ addacl
+                          \ allpartial
+                          \ altscreen
+                          \ at
+                          \ attrcolor
+                          \ autodetach
+                          \ autonuke
+                          \ backtick
+                          \ bce
+                          \ bd_bc_down
+                          \ bd_bc_left
+                          \ bd_bc_right
+                          \ bd_bc_up
+                          \ bd_bell
+                          \ bd_braille_table
+                          \ bd_eightdot
+                          \ bd_info
+                          \ bd_link
+                          \ bd_lower_left
+                          \ bd_lower_right
+                          \ bd_ncrc
+                          \ bd_port
+                          \ bd_scroll
+                          \ bd_skip
+                          \ bd_start_braille
+                          \ bd_type
+                          \ bd_upper_left
+                          \ bd_upper_right
+                          \ bd_width
+                          \ bell
+                          \ bell_msg
+                          \ bind
+                          \ bindkey
+                          \ blanker
+                          \ blankerprg
+                          \ break
+                          \ breaktype
+                          \ bufferfile
+                          \ bumpleft
+                          \ bumpright
+                          \ c1
+                          \ caption
+                          \ chacl
+                          \ charset
+                          \ chdir
+                          \ cjkwidth
+                          \ clear
+                          \ collapse
+                          \ colon
+                          \ command
+                          \ compacthist
+                          \ console
+                          \ copy
+                          \ crlf
+                          \ debug
+                          \ defautonuke
+                          \ defbce
+                          \ defbreaktype
+                          \ defc1
+                          \ defcharset
+                          \ defencoding
+                          \ defescape
+                          \ defflow
+                          \ defgr
+                          \ defhstatus
+                          \ defkanji
+                          \ deflog
+                          \ deflogin
+                          \ defmode
+                          \ defmonitor
+                          \ defmousetrack
+                          \ defnonblock
+                          \ defobuflimit
+                          \ defscrollback
+                          \ defshell
+                          \ defsilence
+                          \ defslowpaste
+                          \ defutf8
+                          \ defwrap
+                          \ defwritelock
+                          \ defzombie
+                          \ detach
+                          \ digraph
+                          \ dinfo
+                          \ displays
+                          \ dumptermcap
+                          \ echo
+                          \ encoding
+                          \ escape
+                          \ eval
+                          \ exec
+                          \ fit
+                          \ flow
+                          \ focus
+                          \ focusminsize
+                          \ gr
+                          \ group
+                          \ hardcopy
+                          \ hardcopy_append
+                          \ hardcopydir
+                          \ hardstatus
+                          \ height
+                          \ help
+                          \ history
+                          \ hstatus
+                          \ idle
+                          \ ignorecase
+                          \ info
+                          \ kanji
+                          \ kill
+                          \ lastmsg
+                          \ layout
+                          \ license
+                          \ lockscreen
+                          \ log
+                          \ logfile
+                          \ login
+                          \ logtstamp
+                          \ mapdefault
+                          \ mapnotnext
+                          \ maptimeout
+                          \ markkeys
+                          \ maxwin
+                          \ meta
+                          \ monitor
+                          \ mousetrack
+                          \ msgminwait
+                          \ msgwait
+                          \ multiuser
+                          \ nethack
+                          \ next
+                          \ nonblock
+                          \ number
+                          \ obuflimit
+                          \ only
+                          \ other
+                          \ partial
+                          \ password
+                          \ paste
+                          \ pastefont
+                          \ pow_break
+                          \ pow_detach
+                          \ pow_detach_msg
+                          \ prev
+                          \ printcmd
+                          \ process
+                          \ quit
+                          \ readbuf
+                          \ readreg
+                          \ redisplay
+                          \ register
+                          \ remove
+                          \ removebuf
+                          \ rendition
+                          \ reset
+                          \ resize
+                          \ screen
+                          \ scrollback
+                          \ select
+                          \ sessionname
+                          \ setenv
+                          \ setsid
+                          \ shell
+                          \ shelltitle
+                          \ silence
+                          \ silencewait
+                          \ sleep
+                          \ slowpaste
+                          \ sorendition
+                          \ sort
+                          \ source
+                          \ split
+                          \ startup_message
+                          \ stuff
+                          \ su
+                          \ suspend
+                          \ term
+                          \ termcap
+                          \ termcapinfo
+                          \ terminfo
+                          \ time
+                          \ title
+                          \ umask
+                          \ unbindall
+                          \ unsetenv
+                          \ utf8
+                          \ vbell
+                          \ vbell_msg
+                          \ vbellwait
+                          \ verbose
+                          \ version
+                          \ wall
+                          \ width
+                          \ windowlist
+                          \ windows
+                          \ wrap
+                          \ writebuf
+                          \ writelock
+                          \ xoff
+                          \ xon
+                          \ zmodem
+                          \ zombie
+                          \ zombie_timeout
+
+hi def link screenEscape    Special
+hi def link screenComment   Comment
+hi def link screenTodo      Todo
+hi def link screenString    String
+hi def link screenLiteral   String
+hi def link screenVariable  Identifier
+hi def link screenBoolean   Boolean
+hi def link screenNumbers   Number
+hi def link screenSpecials  Special
+hi def link screenCommands  Keyword
+
+let b:current_syntax = "screen"
+
+let &cpo = s:cpo_save
+unlet s:cpo_save
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                " Language: streaming descriptor file
+" Maintainer: Puria Nafisi Azizi (pna) <pna@netstudent.polito.it>
+" License: This file can be redistribued and/or modified under the same terms
+"   as Vim itself.
+" URL: http://netstudent.polito.it/vim_syntax/
+" Last Change: 2012 Feb 03 by Thilo Six
+
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
+        finish
+endif
+
+let s:cpo_save = &cpo
+set cpo&vim
+
+" Always ignore case
+syn case ignore
+
+" Comments
+syn match sdComment /\s*[#;].*$/
+
+" IP Adresses
+syn cluster sdIPCluster contains=sdIPError,sdIPSpecial
+syn match sdIPError /\%(\d\{4,}\|25[6-9]\|2[6-9]\d\|[3-9]\d\{2}\)[\.0-9]*/ contained
+syn match sdIPSpecial /\%(127\.\d\{1,3}\.\d\{1,3}\.\d\{1,3}\)/ contained
+syn match sdIP contained /\%(\d\{1,4}\.\)\{3}\d\{1,4}/ contains=@sdIPCluster
+
+" Statements
+syn keyword sdStatement AGGREGATE AUDIO_CHANNELS
+syn keyword sdStatement BYTE_PER_PCKT BIT_PER_SAMPLE BITRATE
+syn keyword sdStatement CLOCK_RATE CODING_TYPE CREATOR
+syn match sdStatement /^\s*CODING_TYPE\>/ nextgroup=sdCoding skipwhite
+syn match sdStatement /^\s*ENCODING_NAME\>/ nextgroup=sdEncoding skipwhite
+syn keyword sdStatement FILE_NAME FRAME_LEN FRAME_RATE FORCE_FRAME_RATE
+syn keyword sdStatement LICENSE
+syn match sdStatement /^\s*MEDIA_SOURCE\>/ nextgroup=sdSource skipwhite
+syn match sdStatement /^\s*MULTICAST\>/ nextgroup=sdIP skipwhite
+syn keyword sdStatement PAYLOAD_TYPE PKT_LEN PRIORITY
+syn keyword sdStatement SAMPLE_RATE
+syn keyword sdStatement TITLE TWIN
+syn keyword sdStatement VERIFY
+
+" Known Options
+syn keyword sdEncoding H26L MPV MP2T MP4V-ES
+syn keyword sdCoding FRAME SAMPLE
+syn keyword sdSource STORED LIVE
+
+"Specials
+syn keyword sdSpecial TRUE FALSE NULL
+syn keyword sdDelimiter STREAM STREAM_END
+syn match sdError /^search .\{257,}/
+
+
+hi def link sdIP Number
+hi def link sdHostname Type
+hi def link sdEncoding Identifier
+hi def link sdCoding Identifier
+hi def link sdSource Identifier
+hi def link sdComment Comment
+hi def link sdIPError Error
+hi def link sdError Error
+hi def link sdStatement Statement
+hi def link sdIPSpecial Special
+hi def link sdSpecial Special
+hi def link sdDelimiter Delimiter
+
+
+let b:current_syntax = "sd"
+
+let &cpo = s:cpo_save
+unlet s:cpo_save
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 rspective(550px) rotateX(0deg);transform:perspective(550px) rotateX(0deg);opacity:1}to{-webkit-transform:perspective(550px) rotateX(90deg);transform:perspective(550px) rotateX(90deg);opacity:0}}.flip-out-x{-webkit-animation-name:flip-out-x;animation-name:flip-out-x;-webkit-backface-visibility:visible!important;backface-visibility:visible!important}@-webkit-keyframes flip-in-x-nr{0%{-webkit-transform:perspective(100px) rotateX(90deg);transform:perspective(100px) rotateX(90deg);opacity:0}to{-webkit-transform:perspective(100px) rotateX(0deg);transform:perspective(100px) rotateX(0deg);opacity:1}}@keyframes flip-in-x-nr{0%{-webkit-transform:perspective(100px) rotateX(90deg);transform:perspective(100px) rotateX(90deg);opacity:0}to{-webkit-transform:perspective(100px) rotateX(0deg);transform:perspective(100px) rotateX(0deg);opacity:1}}.flip-in-x-nr{-webkit-animation-name:flip-in-x-nr;animation-name:flip-in-x-nr;-webkit-backface-visibility:visible!important;backface-visibility:visible!important}@-webkit-keyframes flip-out-x-nr{0%{-webkit-transform:perspective(100px) rotateX(0deg);transform:perspective(100px) rotateX(0deg);opacity:1}to{-webkit-transform:perspective(100px) rotateX(90deg);transform:perspective(100px) rotateX(90deg);opacity:0}}@keyframes flip-out-x-nr{0%{-webkit-transform:perspective(100px) rotateX(0deg);transform:perspective(100px) rotateX(0deg);opacity:1}to{-webkit-transform:perspective(100px) rotateX(90deg);transform:perspective(100px) rotateX(90deg);opacity:0}}.flip-out-x-nr{-webkit-animation-name:flip-out-x-nr;animation-name:flip-out-x-nr;-webkit-backface-visibility:visible!important;backface-visibility:visible!important}@-webkit-keyframes flip-in-x-fr{0%{-webkit-transform:perspective(1000px) rotateX(90deg);transform:perspective(1000px) rotateX(90deg);opacity:0}to{-webkit-transform:perspective(1000px) rotateX(0deg);transform:perspective(1000px) rotateX(0deg);opacity:1}}@keyframes flip-in-x-fr{0%{-webkit-transform:perspective(1000px) rotateX(90deg);transform:perspective(1000px) rotateX(90deg);opacity:0}to{-webkit-transform:perspective(1000px) rotateX(0deg);transform:perspective(1000px) rotateX(0deg);opacity:1}}.flip-in-x-fr{-webkit-animation-name:flip-in-x-fr;animation-name:flip-in-x-fr;-webkit-backface-visibility:visible!important;backface-visibility:visible!important}@-webkit-keyframes flip-out-x-fr{0%{-webkit-transform:perspective(1000px) rotateX(0deg);transform:perspective(1000px) rotateX(0deg);opacity:1}to{-webkit-transform:perspective(1000px) rotateX(90deg);transform:perspective(1000px) rotateX(90deg);opacity:0}}@keyframes flip-out-x-fr{0%{-webkit-transform:perspective(1000px) rotateX(0deg);transform:perspective(1000px) rotateX(0deg);opacity:1}to{-webkit-transform:perspective(1000px) rotateX(90deg);transform:perspective(1000px) rotateX(90deg);opacity:0}}.flip-out-x-fr{-webkit-animation-name:flip-out-x-fr;animation-name:flip-out-x-fr;-webkit-backface-visibility:visible!important;backface-visibility:visible!important}@-webkit-keyframes flip-in-y{0%{-webkit-transform:perspective(550px) rotateY(90deg);transform:perspective(550px) rotateY(90deg);opacity:0}to{-webkit-transform:perspective(550px) rotateY(0deg);transform:perspective(550px) rotateY(0deg);opacity:1}}@keyframes flip-in-y{0%{-webkit-transform:perspective(550px) rotateY(90deg);transform:perspective(550px) rotateY(90deg);opacity:0}to{-webkit-transform:perspective(550px) rotateY(0deg);transform:perspective(550px) rotateY(0deg);opacity:1}}.flip-in-y{-webkit-animation-name:flip-in-y;animation-name:flip-in-y;-webkit-backface-visibility:visible!important;backface-visibility:visible!important}@-webkit-keyframes flip-out-y{0%{-webkit-transform:perspective(550px) rotateY(0deg);transform:perspective(550px) rotateY(0deg);opacity:1}to{-webkit-transform:perspective(550px) rotateY(90deg);transform:perspective(550px) rotateY(90deg);opacity:0}}@keyframes flip-out-y{0%{-webkit-transform:perspective(550px) rotateY(0deg);transform:perspective(550px) rotateY(0deg);opacity:1}to{-webkit-transform:perspective(550px) rotateY(90deg);transform:perspective(550px) rotateY(90deg);opacity:0}}.flip-out-y{-webkit-animation-name:flip-out-y;animation-name:flip-out-y;-webkit-backface-visibility:visible!important;backface-visibility:visible!important}@-webkit-keyframes flip-in-y-nr{0%{-webkit-transform:perspective(100px) rotateY(90deg);transform:perspective(100px) rotateY(90deg);opacity:0}to{-webkit-transform:perspective(100px) rotateY(0deg);transform:perspective(100px) rotateY(0deg);opacity:1}}@keyframes flip-in-y-nr{0%{-webkit-transform:perspective(100px) rotateY(90deg);transform:perspective(100px) rotateY(90deg);opacity:0}to{-webkit-transform:perspective(100px) rotateY(0deg);transform:perspective(100px) rotateY(0deg);opacity:1}}.flip-in-y-nr{-webkit-animation-name:flip-in-y-nr;animation-name:flip-in-y-nr;-webkit-backface-visibility:visible!important;backface-visibility:visible!important}@-webkit-keyframes flip-out-y-nr{0%{-webkit-transform:perspective(100px) rotateY(0deg);transform:perspective(100px) rotateY(0deg);opacity:1}to{-webkit-transform:perspective(100px) rotateY(90deg);transform:perspective(100px) rotateY(90deg);opacity:0}}@keyframes flip-out-y-nr{0%{-webkit-transform:perspective(100px) rotateY(0deg);transform:perspective(100px) rotateY(0deg);opacity:1}to{-webkit-transform:perspective(100px) rotateY(90deg);transform:perspective(100px) rotateY(90deg);opacity:0}}.flip-out-y-nr{-webkit-animation-name:flip-out-y-nr;animation-name:flip-out-y-nr;-webkit-backface-visibility:visible!important;backface-visibility:visible!important}@-webkit-keyframes flip-in-y-fr{0%{-webkit-transform:perspective(1000px) rotateY(90deg);transform:perspective(1000px) rotateY(90deg);opacity:0}to{-webkit-transform:perspective(1000px) rotateY(0deg);transform:perspective(1000px) rotateY(0deg);opacity:1}}@keyframes flip-in-y-fr{0%{-webkit-transform:perspective(1000px) rotateY(90deg);transform:perspective(1000px) rotateY(90deg);opacity:0}to{-webkit-transform:perspective(1000px) rotateY(0deg);transform:perspective(1000px) rotateY(0deg);opacity:1}}.flip-in-y-fr{-webkit-animation-name:flip-in-y-fr;animation-name:flip-in-y-fr;-webkit-backface-visibility:visible!important;backface-visibility:visible!important}@-webkit-keyframes flip-out-y-fr{0%{-webkit-transform:perspective(1000px) rotateY(0deg);transform:perspective(1000px) rotateY(0deg);opacity:1}to{-webkit-transform:perspective(1000px) rotateY(90deg);transform:perspective(1000px) rotateY(90deg);opacity:0}}@keyframes flip-out-y-fr{0%{-webkit-transform:perspective(1000px) rotateY(0deg);transform:perspective(1000px) rotateY(0deg);opacity:1}to{-webkit-transform:perspective(1000px) rotateY(90deg);transform:perspective(1000px) rotateY(90deg);opacity:0}}.flip-out-y-fr{-webkit-animation-name:flip-out-y-fr;animation-name:flip-out-y-fr;-webkit-backface-visibility:visible!important;backface-visibility:visible!important}@-webkit-keyframes zoom-in{0%{-webkit-transform:scale(.7);transform:scale(.7);opacity:0}to{opacity:1}}@keyframes zoom-in{0%{-webkit-transform:scale(.7);transform:scale(.7);opacity:0}to{opacity:1}}.zoom-in{-webkit-animation-name:zoom-in;animation-name:zoom-in}@-webkit-keyframes zoom-out{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}50%{-webkit-transform:scale(.7);transform:scale(.7)}50%,to{opacity:0}}@keyframes zoom-out{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}50%{-webkit-transform:scale(.7);transform:scale(.7)}50%,to{opacity:0}}.zoom-out{-webkit-animation-name:zoom-out;animation-name:zoom-out}@-webkit-keyframes zoom-in-sm{0%{-webkit-transform:scale(.95);transform:scale(.95);opacity:0}to{opacity:1}}@keyframes zoom-in-sm{0%{-webkit-transform:scale(.95);transform:scale(.95);opacity:0}to{opacity:1}}.zoom-in-sm{-webkit-animation-name:zoom-in-sm;animation-name:zoom-in-sm}@-webkit-keyframes zoom-out-sm{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}50%{-webkit-transform:scale(.95);transform:scale(.95)}50%,to{opacity:0}}@keyframes zoom-out-sm{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}50%{-webkit-transform:scale(.95);transform:scale(.95)}50%,to{opacity:0}}.zoom-out-sm{-webkit-animation-name:zoom-out-sm;animation-name:zoom-out-sm}@-webkit-keyframes zoom-in-lg{0%{-webkit-transform:scale(.4);transform:scale(.4);opacity:0}to{opacity:1}}@keyframes zoom-in-lg{0%{-webkit-transform:scale(.4);transform:scale(.4);opacity:0}to{opacity:1}}.zoom-in-lg{-webkit-animation-name:zoom-in-lg;animation-name:zoom-in-lg}@-webkit-keyframes zoom-out-lg{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}50%{-webkit-transform:scale(.4);transform:scale(.4)}50%,to{opacity:0}}@keyframes zoom-out-lg{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}50%{-webkit-transform:scale(.4);transform:scale(.4)}50%,to{opacity:0}}.zoom-out-lg{-webkit-animation-name:zoom-out-lg;animation-name:zoom-out-lg}@-webkit-keyframes overlay-slide-in-top{0%{height:100%}to{height:0}}@keyframes overlay-slide-in-top{0%{height:100%}to{height:0}}.overlay-slide-in-top{top:0;height:0;-webkit-animation-name:overlay-slide-in-top;animation-name:overlay-slide-in-top}@-webkit-keyframes overlay-slide-out-top{0%{height:0}to{height:100%}}@keyframes overlay-slide-out-top{0%{height:0}to{height:100%}}.overlay-slide-out-top{top:0;height:100%;-webkit-animation-name:overlay-slide-out-top;animation-name:overlay-slide-out-top}@-webkit-keyframes overlay-slide-in-bottom{0%{height:100%}to{height:0}}@keyframes overlay-slide-in-bottom{0%{height:100%}to{height:0}}.overlay-slide-in-bottom{bottom:0;height:0;-webkit-animation-name:overlay-slide-in-bottom;animation-name:overlay-slide-in-bottom}@-webkit-keyframes overlay-slide-out-bottom{0%{height:0}to{height:100%}}@keyframes overlay-slide-out-bottom{0%{height:0}to{height:100%}}.overlay-slide-out-bottom{bottom:0;height:100%;-webkit-animation-name:overlay-slide-out-bottom;animation-name:overlay-slide-out-bottom}@-webkit-keyframes overlay-slide-in-left{0%{width:100%}to{width:0}}@keyframes overlay-slide-in-left{0%{width:100%}to{width:0}}.overlay-slide-in-left{width:0;-webkit-animation-name:overlay-slide-in-left;animation-name:overlay-slide-in-left}@-webkit-keyframes overlay-slide-out-left{0%{width:0}to{width:100%}}@keyframes overlay-slide-out-left{0%{width:0}to{width:100%}}.overlay-slide-out-left{left:0;width:100%;-webkit-animation-name:overlay-slide-out-left;animation-name:overlay-slide-out-left}@-webkit-keyframes overlay-slide-in-right{0%{width:100%}to{width:0}}@keyframes overlay-slide-in-right{0%{width:100%}to{width:0}}.overlay-slide-in-right{right:0;width:0;-webkit-animation-name:overlay-slide-in-right;animation-name:overlay-slide-in-right}@-webkit-keyframes overlay-slide-out-right{0%{width:0}to{width:100%}}@keyframes overlay-slide-out-right{0%{width:0}to{width:100%}}.overlay-slide-out-right{right:0;width:100%;-webkit-animation-name:overlay-slide-out-right;animation-name:overlay-slide-out-right}
